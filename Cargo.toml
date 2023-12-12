@@ -2,7 +2,7 @@
 name = "nauvi"
 version = "0.1.0"
 edition = "2021"
-description = "Context-aware javascript codegen"
+description = "Simple javascript codegen (this does not provide validity checks nor does not guarantee pretty output)"
 authors = ["Oliwier Michalik"]
 license = "MIT"
 
