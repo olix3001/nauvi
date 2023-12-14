@@ -49,7 +49,7 @@ impl Module {
     }
 
     /// Generate the module's code and write it to any output.
-    pub fn generate_to(&self, mut output: impl std::io::Write) {
+    pub fn generate_to(&self, mut output: &mut impl std::io::Write) {
         // Imports
         for dependency in &self.dependencies {
             output.write_all(&format!(

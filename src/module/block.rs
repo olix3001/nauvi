@@ -1,4 +1,5 @@
 /// Block of code in a module / function.
+#[derive(Debug, Clone, PartialEq)]
 pub struct Block {
     /// Indentation level of the block.
     pub indent: usize,
