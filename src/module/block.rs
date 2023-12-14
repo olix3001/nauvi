@@ -34,6 +34,8 @@ pub enum Statement {
         /// The right side of the expression.
         right: Box<Statement>
     },
+    /// Block of code.
+    Block(Box<Block>)
 }
 
 /// The type of a variable.
@@ -62,6 +64,9 @@ impl Statement {
             },
             Statement::Binary { left, operator, right } => {
                 format!("({} {} {})", left.generate(), operator, right.generate())
+            }
+            Statement::Block(block) => {
+                block.generate()
             }
         }
     }
