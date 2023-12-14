@@ -48,6 +48,21 @@ impl Module {
         path
     }
 
+    /// Generate the module's code and write it to any output.
+    pub fn generate_to(&self, mut output: impl std::io::Write) {
+        // Imports
+        for dependency in &self.dependencies {
+            output.write_all(&format!(
+                "import {{ {} }} from '{}';\n",
+                dependency.imports.join(", "),
+                dependency.path
+            ).as_bytes()).unwrap();
+        }
+
+        // Main block
+        output.write_all(&self.main_block.generate().as_bytes()).unwrap();
+    }
+
     /// Generate the module's code.
     pub fn generate_code_string(&self) -> String {
         let mut code = String::new();
